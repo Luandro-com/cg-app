@@ -1,8 +1,8 @@
-# NextSimpleStarter
+# Wordpress Next Front-End Boilerplate
 Simple PWA boilerplate with nextjs and preact
 
-[![Build Status](https://travis-ci.org/ooade/NextSimpleStarter.svg?branch=master)](https://travis-ci.org/ooade/NextSimpleStarter)
-[![Code Climate Badge](https://codeclimate.com/github/ooade/NextSimpleStarter/badges/gpa.svg)](https://codeclimate.com/github/ooade/NextSimpleStarter/badges) [![Issue Count](https://codeclimate.com/github/ooade/NextSimpleStarter/badges/issue_count.svg)](https://codeclimate.com/github/ooade/NextSimpleStarter)
+[![Build Status](https://travis-ci.org/wp-next/wpn-app-boilerplate.svg?branch=master)](https://travis-ci.org/wp-next/wpn-app-boilerplate)
+[![Code Climate Badge](https://codeclimate.com/github/wp-next/wpn-app-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/wp-next/wpn-app-boilerplate/badges) [![Issue Count](https://codeclimate.com/github/wp-next/wpn-app-boilerplate/badges/issue_count.svg)](https://codeclimate.com/github/wp-next/wpn-app-boilerplate)
 
 # Quick-Start Guide
 
@@ -15,7 +15,7 @@ Simple PWA boilerplate with nextjs and preact
 **1. Clone this repo:**
 
 ```sh
-git clone https://github.com/ooade/NextSimpleStarter.git
+git clone https://github.com/wp-next/wpn-app-boilerplate.git
 cd NextSimpleStarter
 ```
 

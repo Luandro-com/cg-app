@@ -1,21 +1,30 @@
 import React from 'react';
 import Head from 'next/head';
+import 'isomorphic-fetch'
 
 import Todo from '../components/Todo';
 // Grab our HOC Provider
 import { Provider } from '../utils';
 
 class Blog extends React.Component {
-   static async getInitialProps (props) {
-     console.log(props)
-    // eslint-disable-next-line no-undef
-    const res = await fetch('https://api.github.com/repos/developit/preact')
-    const json = await res.json()
-    return { stars: json.stargazers_count }
+  //  static async getInitialProps ({ query: { slug } }) {
+  //    console.log('query: ', slug)
+  //   // eslint-disable-next-line no-undef
+  //   const res = await fetch('https://api.github.com/repos/developit/preact')
+  //   const json = await res.json()
+  //   return { stars: json.stargazers_count }
+  // }
+
+  static getInitialProps ({ query: { slug } }) {
+    return { slug }
+  }
+
+  state = {
+    state: null
   }
 
   componentDidMount () {
-    console.log(this.props)
+    console.log(' props', this.props, this.state)
   }
 
   render() {
@@ -27,7 +36,7 @@ class Blog extends React.Component {
           <link rel='manifest' href='static/manifest.json' />
           <title>Todo App</title>
         </Head>
-        <Todo />
+        <h1>Blog Mofo!</h1>
       </div> 
     );
   }
