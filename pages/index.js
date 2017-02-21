@@ -1,20 +1,31 @@
+import 'isomorphic-fetch';
 import React from 'react';
-import Head from 'next/head';
+import Layout from '../components/Layout';
+import PostItem from '../components/PostItem';
+import apiUrl from '../utils/api';
 
-import Todo from '../components/Todo';
-// Grab our HOC Provider
-import { Provider } from '../utils';
+class Index extends React.Component {
+  static async getInitialProps() {
+    const res = await fetch(`${apiUrl}/posts`);
+    const json = await res.json();
+    return { posts: json.posts };
+  }
 
-const Index = () => (
-    <div>
-      <Head>
-        <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui' />
-        <meta name='theme-color' content='#673ab7' />
-        <link rel='manifest' href='static/manifest.json' />
-        <title>Todo App</title>
-      </Head>
-      <Todo />
-    </div>
-);
+  static propTypes = {
+    posts: React.PropTypes.arrayOf(React.PropTypes.object),
+  }
 
-export default Provider(Index);
+  render() {
+    const { posts } = this.props;
+    return (
+      <Layout>
+        <div>
+          {posts && posts.map((post, key) => <PostItem key={key} {...post} />)}
+          {!posts && <div className="mdl-spinner mdl-js-spinner is-active"></div>}
+        </div>
+      </Layout>
+    );
+  }
+}
+
+export default Index;

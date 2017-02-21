@@ -1,45 +1,55 @@
+import 'isomorphic-fetch';
 import React from 'react';
+import Link from 'next/link';
+import Router from 'next/router';
 import Head from 'next/head';
-import 'isomorphic-fetch'
+import NProgress from 'nprogress';
+import Layout from '../components/Layout';
+import apiUrl from '../utils/api';
 
-import Todo from '../components/Todo';
-// Grab our HOC Provider
-import { Provider } from '../utils';
+Router.onRouteChangeStart = (url) => {
+  console.log(`Loading: ${url}`);
+  NProgress.start();
+}
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 class Blog extends React.Component {
-  //  static async getInitialProps ({ query: { slug } }) {
-  //    console.log('query: ', slug)
-  //   // eslint-disable-next-line no-undef
-  //   const res = await fetch('https://api.github.com/repos/developit/preact')
-  //   const json = await res.json()
-  //   return { stars: json.stargazers_count }
-  // }
-
-  static getInitialProps ({ query: { slug } }) {
-    return { slug }
+  static async getInitialProps({ query: { slug } }) {
+    const res = await fetch(`${apiUrl}/posts/slug:${slug}`);
+    const json = await res.json();
+    return {
+      content: json.content,
+      author: json.author && json.author.nice_name,
+      date: json.date,
+      slug: json.slug,
+    };
   }
 
-  state = {
-    state: null
+  static propTypes = {
+    content: React.PropTypes.string,
+    author: React.PropTypes.string,
+    date: React.PropTypes.string,
   }
 
-  componentDidMount () {
-    console.log(' props', this.props, this.state)
+  componentDidMount() {
   }
 
   render() {
+    const { content, author, date, slug } = this.props;
     return (
-      <div>
-        <Head>
-          <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui' />
-          <meta name='theme-color' content='#673ab7' />
-          <link rel='manifest' href='static/manifest.json' />
-          <title>Todo App</title>
-        </Head>
-        <h1>Blog Mofo!</h1>
-      </div> 
+      <Layout>
+        <div>
+          <Link href="/">
+            <a> Back </a>
+          </Link>
+          <h1>Blog</h1>
+          <h3>{ author }</h3>
+          <h4>{ slug }</h4>
+        </div>
+      </Layout>
     );
   }
 }
 
-export default Provider(Blog);
+export default Blog;
