@@ -108,7 +108,6 @@ class Blog extends React.Component {
           <meta property="og:url" content={canonicalUrl} />
           <meta property="og:description" content={usedDesc} />
           <meta property="og:image" content={usedImg} />
-          <meta property="article:section" content={'article'} />
           <meta property="og:type" content="article" />
         </Head>
         <Post
