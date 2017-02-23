@@ -27,7 +27,9 @@
   "scripts": {
     "dev": "node server",
     "build": "next build",
-    "start": "NODE_ENV=production node server"
+    "start": "NODE_ENV=production node server",
+    "update": "yarn && yarn build && pm2 restart teste",
+    "launch": "yarn && yarn build && pm2 start npm --name 'teste' -- start"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
