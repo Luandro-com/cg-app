@@ -5,48 +5,93 @@ import Router from 'next/router';
 import Head from 'next/head';
 import NProgress from 'nprogress';
 import Layout from '../components/Layout';
-import apiUrl from '../utils/api';
+import Post from '../components/Post';
+import { appUrl, fullBlogUrl, footerContactUrl, searchUrl, postInfoUrl } from '../utils/config';
 
 Router.onRouteChangeStart = (url) => {
-  console.log(`Loading: ${url}`);
   NProgress.start();
-}
+};
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 class Blog extends React.Component {
-  static async getInitialProps({ query: { slug } }) {
-    const res = await fetch(`${apiUrl}/posts/slug:${slug}`);
-    const json = await res.json();
+  static async getInitialProps({ query }) {
+    let slug;
+    if (query.slug) {
+      slug = query.slug;
+    } else if (query.p) {
+      slug = query.p;
+    } else {
+      slug = query;
+    }
+
+    let content;
+    let contactFooterData;
+    content = await fetch(fullBlogUrl(slug))
+      .then(res => {
+        console.log("RESP",res.status);
+        return res.json();
+      })
+      .catch(err => {
+        console.log('Err on CONTENT: ', err);
+        return false;
+      });
+    contactFooterData = await fetch(footerContactUrl)
+      .then(res => res.json())
+      .catch(err => {
+        console.log('FOOOTER ERROR', err);
+        return false;
+      });
     return {
-      content: json.content,
-      author: json.author && json.author.nice_name,
-      date: json.date,
-      slug: json.slug,
+      content,
+      contactFooterData,
     };
   }
 
-  static propTypes = {
-    content: React.PropTypes.string,
-    author: React.PropTypes.string,
-    date: React.PropTypes.string,
-  }
-
   componentDidMount() {
+    if (this.props.content) {
+      const { previousPost, nextPost } = this.props.content[0];
+      if (previousPost !== null) {
+        fetch(postInfoUrl(previousPost))
+          .then(res => res.json())
+          .then((data) => {
+            this.setState({
+              prevPostData: data,
+            });
+          })
+          .catch(err => console.log(err));
+      }
+      if (nextPost !== null) {
+        fetch(postInfoUrl(nextPost))
+          .then(res => res.json())
+          .then((data) => {
+            this.setState({
+              nextPostData: data,
+            });
+          })
+          .catch(err => console.log(err));
+      }
+    }
   }
 
   render() {
-    const { content, author, date, slug } = this.props;
+    const { content, contactFooterData, url } = this.props;
+    const layoutData = slug => {
+      if (contactFooterData) {
+        return contactFooterData.filter(item => item.slug === slug)[0];
+      }
+      return false;
+    };
     return (
-      <Layout>
-        <div>
-          <Link href="/">
-            <a> Back </a>
-          </Link>
-          <h1>Blog</h1>
-          <h3>{ author }</h3>
-          <h4>{ slug }</h4>
-        </div>
+      <Layout
+        footerData={layoutData('rodape')}
+        contactData={layoutData('contato')}
+      >
+        <Post
+          {...url}
+          {...content[0]}
+          {...this.state}
+        />
       </Layout>
     );
   }
