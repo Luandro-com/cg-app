@@ -14,8 +14,7 @@ const { FacebookShareCount } = ShareCounts;
 const { FacebookShareButton } = ShareButtons;
 const iconSize = 56;
 
-const PostContent = ({ title, image, content, date, author, pathname, query, seo }) => {
-  const currentUrl = `${appUrl}${pathname}/${query}`
+const PostContent = ({ title, image, content, date, author, canonicalUrl, seo }) => {
   return (
     <div style={{ margin: '50px auto' }}>
       <h1>{title}</h1>
@@ -29,11 +28,11 @@ const PostContent = ({ title, image, content, date, author, pathname, query, seo
       <h4 style={{ fontWeight: 100, paddingBottom: 25 }}>
         Postado <span style={{ color: colors.orange }}><Time date={date} /></span> por <span style={{ color: colors.orange }}>{author}</span>
       </h4>
-      <div className="image" style={{ backgroundImage: `url(${image})` }} />
+      <img src={image} className="image" />
       <Rendered data={content} className="content" />
       <div className="social">
         <FacebookShareButton
-          url={currentUrl}
+          url={canonicalUrl}
           title={title}
           description={seo && seo.metadesc}
           image={image}
@@ -44,16 +43,15 @@ const PostContent = ({ title, image, content, date, author, pathname, query, seo
               <ShareIcon size={iconSize - 20} color={colors.white} />
             </div>
             <div className="count">
-              <FacebookShareCount url={currentUrl} />
+              <FacebookShareCount url={canonicalUrl} />
             </div>
           </div>
         </FacebookShareButton>
       </div>
       <style jsx>{`
         .image {
-          background-size: cover;
-          width: auto;
-          height: 500px;
+          width: 100%;
+          height: auto;
         }
         .content > * {
           max-width: 100%;

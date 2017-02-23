@@ -45,6 +45,7 @@ class Blog extends React.Component {
     return {
       content,
       contactFooterData,
+      slug,
     };
   }
 
@@ -76,7 +77,7 @@ class Blog extends React.Component {
   }
 
   render() {
-    const { content, contactFooterData, url } = this.props;
+    const { content, contactFooterData, url, slug } = this.props;
     const { seo } = content[0];
     const layoutData = slug => {
       if (contactFooterData) {
@@ -93,6 +94,7 @@ class Blog extends React.Component {
       usedDesc = checkLength(seo['opengraph-description']) ? seo['opengraph-description'] : seo.metadesc;
       usedImg = checkLength(seo['opengraph-image']) ? seo['opengraph-image'] : content[0].image;
     }
+    const canonicalUrl = `${appUrl}/blog/${slug}`;
 
     return (
       <Layout
@@ -103,11 +105,14 @@ class Blog extends React.Component {
           <title>{usedTitle}</title>
           <meta name="description" content={usedDesc} />
           <meta property="og:title" content={usedTitle} />
+          <meta property="og:url" content={canonicalUrl} />
           <meta property="og:description" content={usedDesc} />
           <meta property="og:image" content={usedImg} />
           <meta property="article:section" content={'article'} />
+          <meta property="og:type" content="article" />
         </Head>
         <Post
+          canonicalUrl={canonicalUrl}
           {...url}
           {...content[0]}
           {...this.state}

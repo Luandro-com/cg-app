@@ -5,7 +5,7 @@ import Router from 'next/router';
 import Head from 'next/head';
 import { scrollSpy } from 'react-scroll';
 import NProgress from 'nprogress';
-import { componentsDataUrl, menuDataUrl, blogDataUrl } from '../utils/config';
+import { appUrl, componentsDataUrl, menuDataUrl, blogDataUrl } from '../utils/config';
 import { getData, saveData } from '../utils/localStorage';
 import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
@@ -131,10 +131,12 @@ class Index extends React.Component {
       >
         <Head>
           <title>{seo['opengraph-title']}</title>
+          <meta property="og:url" content={appUrl} />
           <meta name="description" content={seo['opengraph-description']} />
           <meta property="og:title" content={seo['opengraph-title']} />
           <meta property="og:description" content={seo['opengraph-description']} />
           <meta property="og:image" content={seo['opengraph-image']} />
+          <meta property="og:type" content="website" />
         </Head>
         <div>
           <Navbar
