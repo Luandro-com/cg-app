@@ -24,7 +24,7 @@ const PostNavbar = ({ archive }) => (
     <Link href="/">
       <div
         style={{
-          width: '40%',
+          width: '45%',
           display: 'flex',
           flexFlow: 'flow nowrap',
           alignItems: 'center',
@@ -56,7 +56,7 @@ const PostNavbar = ({ archive }) => (
     <style jsx>{`
       @media(min-width: 768px) {
         .right {
-          width: 40%;
+          width: 50%;
           display: flex;
           flex-flow: row nowrap;
           justify-content: flex-end;
