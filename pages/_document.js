@@ -1,24 +1,24 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-// import onfontready from 'onfontready';
+import FontFaceObserver from 'fontfaceobserver';
 import { fontFamily, colors } from '../utils/config';
 
 export default class MyDocument extends Document {
+  state = {
+    currentFont: 'sans-serif',
+  }
   render() {
-    // Load fonts
-    // if (typeof (window) !== 'undefined') {
-    //   onfontready(fontFamily, () => {
-    //     console.log('Font loaded');
-    //     document.documentElement.className += ' loaded';
-    //   }, {
-    //     timeoutAfter: 2500,
-    //     onTimeout: () => {
-    //       document.documentElement.className += ' timedOut';
-    //     },
-    //   });
-    // }
+    const font = new FontFaceObserver(fontFamily);
+    font.load().then(() => {
+      console.log('Font has loaded.');
+      this.setState({
+        currentFont: fontFamily,
+      });
+    }).catch(() => {
+      console.log('Font failed to load.');
+    });
     return (
-      <html lang="pt">
+      <html lang="pt" style={{ fontFamily: `${this.state.currentFont}, sans-serif` }}>
         <Head>
           <meta charSet="utf-8" />
           <title>Consultoria CG</title>

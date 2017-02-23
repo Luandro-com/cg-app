@@ -57,6 +57,22 @@ class TitleBar extends React.Component {
                 left: -30%;
               }
             }
+            @media (min-width: 1280px) {
+              .bars {
+                left: -50%;
+              }
+              .long {
+                width: 150%;
+              }
+              .short {
+                width: 110%;
+              }
+            }
+            @media (min-width: 1440px) {
+              .bars {
+                left: -80%;
+              }
+            }
           `}</style>
         </div>
       </VisibilitySensor>

@@ -43,7 +43,7 @@ const PostContent = ({ title, image, content, date, author, pathname, query, seo
           <div className="share">
             <FacebookIcon size={iconSize} />
             <div className="share-icon">
-              <ShareIcon size={iconSize} color={colors.white} />
+              <ShareIcon size={iconSize - 20} color={colors.white} />
             </div>
             <div className="count">
               <FacebookShareCount url={currentUrl} />
@@ -70,8 +70,16 @@ const PostContent = ({ title, image, content, date, author, pathname, query, seo
           align-items: center;
         }
         .share-icon {
+          width: ${iconSize}px;
           display: none;
           background: #224389;
+          margin: 0 auto;
+          text-align: center;
+          padding: 10px 0;
+          transition: all ease-in-out 1s;
+        }
+        .share-icon:hover {
+          transform: translate3d(2px,2px,5px);
         }
         .count {
           text-align: center;

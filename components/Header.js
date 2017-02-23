@@ -49,9 +49,10 @@ const Header = ({ slug, title, text, image, headerColor, custom }) => {
         h2 {
           text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
           marginbottom: -20px;
-          font-size: 3vw;
+          font-size: 1.6em;
         }
         h3 {
+          max-width: 90%;
           font-size: 1em;
           font-weight: 800;
           text-transform: uppercase;
@@ -60,7 +61,7 @@ const Header = ({ slug, title, text, image, headerColor, custom }) => {
         }
         .container {
           position: relative;
-          top: 50%;
+          top: 20%;
           color: ${colors.white};
           text-align: center;
         }
@@ -84,6 +85,14 @@ const Header = ({ slug, title, text, image, headerColor, custom }) => {
           }
         }
         @media(min-width: 968px) {
+          .container {
+             top: 50%;
+          }
+        }
+        @media(min-width: 968px) {
+          h2 {
+            font-size: 3vw;
+          }
           h3 {
             font-size: 2vw;
           }
