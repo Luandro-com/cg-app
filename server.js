@@ -38,7 +38,7 @@ app.prepare()
     server.get('*', (req, res) => handle(req, res));
     server.listen(port, err => {
       if (err) throw error;
-      console.log('> App running on port port');
+      console.log('> App running on port', port);
     });
   });
 // .then(() => {
