@@ -55,7 +55,7 @@ const PostContent = ({ title, image, content, date, author, pathname, query, seo
           width: auto;
           height: 500px;
         }
-        .content {
+        .content > * {
           max-width: 100%;
         }
         .social {

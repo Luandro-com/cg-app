@@ -5,6 +5,7 @@ export const colors = {
   grey: '#404040',
   secondary: '#7a5634',
 };
+export const GAKey = 'UA-84658570-1';
 export const fontFamily = 'Open Sans';
 export const appUrl = 'http://consultoriacg.com.br';
 export const apiUrl = 'http://admin.consultoriacg.com.br/wp-json/';

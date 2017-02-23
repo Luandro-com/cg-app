@@ -1,12 +1,18 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import FontFaceObserver from 'fontfaceobserver';
-import { fontFamily, colors } from '../utils/config';
+import { fontFamily, colors, GAKey } from '../utils/config';
+import ReactGA from 'react-ga';
 
 export default class MyDocument extends Document {
   state = {
     currentFont: 'sans-serif',
   }
+
+  componentDidMount() {
+      ReactGA.initialize(GAKey);
+  }
+
   render() {
     const font = new FontFaceObserver(fontFamily);
     font.load().then(() => {
@@ -119,7 +125,10 @@ export default class MyDocument extends Document {
             text-transform: uppercase;
             font-weight: 600;
           }
-          #blog h3, #blog h2 {
+          #blog h2 {
+            font-size: 1.2em;
+          }
+          #blog h3 {
             font-size: 1em;
           }
           #blog blockquote > * {
@@ -154,7 +163,6 @@ export default class MyDocument extends Document {
             }
             h3 {
               font-size: 1.6em;
-              padding-left: initial !important;
             }
             blockquote h3 {
               font-size: 1.4em;
