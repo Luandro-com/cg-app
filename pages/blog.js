@@ -82,11 +82,25 @@ class Blog extends React.Component {
       }
       return false;
     };
+    const { seo } = content[0];
+    const checkLength = string => string.length > 3;
+    const usedTitle = checkLength(seo['opengraph-title']) ? seo['opengraph-title'] : content[0].title;
+    const usedDesc = checkLength(seo['opengraph-description']) ? seo['opengraph-description'] : seo.metadesc;
+    const usedImg = checkLength(seo['opengraph-image']) ? seo['opengraph-image'] : content[0].image;
+
     return (
       <Layout
         footerData={layoutData('rodape')}
         contactData={layoutData('contato')}
       >
+        <Head>
+          <title>{usedTitle}</title>
+          <meta name="description" content={usedDesc} />
+          <meta property="og:title" content={usedTitle} />
+          <meta property="og:description" content={usedDesc} />
+          <meta property="og:image" content={usedImg} />
+          <meta property="article:section" content={'article'} />
+        </Head>
         <Post
           {...url}
           {...content[0]}

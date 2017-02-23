@@ -18,11 +18,39 @@ export default class MyDocument extends Document {
       });
     }
     return (
-      <html>
+      <html lang="pt">
         <Head>
-          <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
+          <meta charSet="utf-8" />
+          <title>Consultoria CG</title>
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          <meta property="og:locale" content="pt_BR" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+          <link rel="alternate" type="application/rss+xml" title="Feed de comentários para CG Consultoria »" href="http://admin.consultoriacg.com.br/comments/feed/" />
+          <link rel="dns-prefetch" href="//s.w.org" />
+          <link rel="alternate" type="application/rss+xml" title="Feed para CG Consultoria »" href="http://admin.consultoriacg.com.br/feed/" />
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
-          {/* TODO: LOAD ONLY ON HOME */}
+          <link rel="shortcut icon" href="/static/favicon.ico" />
+          <link rel="icon" sizes="16x16 32x32 64x64" href="/static/favicon.ico" />
+          <link rel="icon" type="image/png" sizes="196x196" href="/static/favicon-192.png" />
+          <link rel="icon" type="image/png" sizes="160x160" href="/static/favicon-160.png" />
+          <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-96.png" />
+          <link rel="icon" type="image/png" sizes="64x64" href="/static/favicon-64.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16.png" />
+          <link rel="apple-touch-icon" href="/static/favicon-57.png" />
+          <link rel="apple-touch-icon" sizes="114x114" href="/static/favicon-114.png" />
+          <link rel="apple-touch-icon" sizes="72x72" href="/static/favicon-72.png" />
+          <link rel="apple-touch-icon" sizes="144x144" href="/static/favicon-144.png" />
+          <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon-60.png" />
+          <link rel="apple-touch-icon" sizes="120x120" href="/static/favicon-120.png" />
+          <link rel="apple-touch-icon" sizes="76x76" href="/static/favicon-76.png" />
+          <link rel="apple-touch-icon" sizes="152x152" href="/static/favicon-152.png" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon-180.png" />
+          <meta name="msapplication-TileColor" content="#FFFFFF" />
+          <meta name="msapplication-TileImage" content="/static/favicon-144.png" />
+          <meta name="msapplication-config" content="/static/browserconfig.xml" />
+          <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
         </Head>

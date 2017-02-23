@@ -2,6 +2,7 @@ import 'isomorphic-fetch';
 import React from 'react';
 import MobileDetect from 'mobile-detect';
 import Router from 'next/router';
+import Head from 'next/head';
 import { scrollSpy } from 'react-scroll';
 import NProgress from 'nprogress';
 import { componentsDataUrl, menuDataUrl, blogDataUrl } from '../utils/config';
@@ -124,11 +125,19 @@ class Index extends React.Component {
       return false;
     };
     const isMobile = new MobileDetect(userAgent).phone() !== null;
+    const { seo } = content('home');
     return (
       <Layout
         footerData={content('rodape')}
         contactData={content('contato')}
       >
+        <Head>
+          <title>{seo['opengraph-title']}</title>
+          <meta name="description" content={seo['opengraph-description']} />
+          <meta property="og:title" content={seo['opengraph-title']} />
+          <meta property="og:description" content={seo['opengraph-description']} />
+          <meta property="og:image" content={seo['opengraph-image']} />
+        </Head>
         <div>
           <Navbar
             menuItems={menu.items}
