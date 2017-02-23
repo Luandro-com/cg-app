@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import Head from 'next/head';
+import { animateScroll } from 'react-scroll';
 import NProgress from 'nprogress';
 import Layout from '../components/Layout';
 import Post from '../components/Post';
@@ -29,7 +30,6 @@ class Blog extends React.Component {
     let contactFooterData;
     content = await fetch(fullBlogUrl(slug))
       .then(res => {
-        console.log("RESP",res.status);
         return res.json();
       })
       .catch(err => {
@@ -49,6 +49,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
+    animateScroll.scrollToTop();
     const { previousPost, nextPost } = this.props.content[0];
     if (previousPost && nextPost) {
       if (previousPost !== null) {

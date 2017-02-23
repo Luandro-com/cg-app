@@ -1,14 +1,10 @@
 import React from 'react';
 import Loader from '../components/Loader';
-// import Head from '../components/Head';
 import BlogItem from '../components/BlogItem';
 import Navbar from '../components/PostNavbar';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-// import init from '../utils/init';
 import { footerContactUrl, blogDataUrl } from '../utils/config';
-
-// init();
 
 class Archive extends React.Component {
   static async getInitialProps({ query }) {
@@ -97,20 +93,28 @@ class Archive extends React.Component {
         <Footer {...pageContent('rodape')} />
         <style jsx>{`
           .container {
-            max-width: 968px;
+            max-width: 80%;
             margin: 50px auto;
           }
-          .item-wrapper {
-             width: 50%;
-          }
-          @media(min-width: 768px) {
+          @media (min-width: 640px) {
             .container {
-               display: flex;
+              display: flex;
               flex-flow: row wrap;
               justify-content: space-between;
             }
             .item-wrapper {
+              width: 48%;
+            }
+          }
+          @media(min-width: 768px) {
+            .item-wrapper {
               width: 30%;
+            }
+          }
+          @media(min-width: 1024px) {
+            .container {
+              max-width: 968px;
+              margin: 70px auto;
             }
           }
         `}</style>
