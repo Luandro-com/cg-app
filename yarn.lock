@@ -3319,6 +3319,10 @@ react-slick@^0.14.6:
     react-responsive-mixin "^0.4.0"
     slick-carousel "^1.6.0"
 
+react-visibility-sensor@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/react-visibility-sensor/-/react-visibility-sensor-3.6.2.tgz#023a5e52230f1d09e6adba057aa791d332eeb1c0"
+
 react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"

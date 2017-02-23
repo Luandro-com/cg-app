@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
     // Load fonts
     if (typeof (window) !== 'undefined') {
       onfontready(fontFamily, () => {
-        console.log('Font loaded')
+        console.log('Font loaded');
         document.documentElement.className += ' loaded';
       }, {
         timeoutAfter: 2500,
@@ -90,27 +90,24 @@ export default class MyDocument extends Document {
           h2 {
             text-transform: uppercase;
             font-weight: 600;
+          }
+          #blog h3, #blog h2 {
             font-size: 1em;
           }
-          h3 {
-            font-size: 1em;
-          }
-          blockquote > * {
+          #blog blockquote > * {
             padding-left: 0 !important;
+            padding-left: 30px;
           }
           button {
             background: none;
             border: none;
           }
-          blockquote {
+          #blog blockquote {
             margin: 50px auto;
             text-align: left;
             border-left: 4px solid ${colors.orange}
           }
-          blockquote > * {
-            padding-left: 30px;
-          }
-          blockquote h3 {
+          #blog blockquote h3 {
             font-size: 1em;
           }
           img {

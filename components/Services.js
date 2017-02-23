@@ -48,7 +48,7 @@ const Services = ({ sectionTitle, slug, title, custom, scroll, customStyle }) =>
           margin: 0 auto;
           z-index: 3;
         }
-        @media(min-width: 768px) {
+        @media(min-width: 640px) {
           .container {
             flex-flow: row wrap;
             align-items: center;

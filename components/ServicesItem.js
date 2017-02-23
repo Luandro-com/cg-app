@@ -34,8 +34,8 @@ const Item = ({ titulo, imagem, descricao, destaque, fundo }) => (
     </p>
     <style jsx>{`
       .wrapper {
-        padding: 50px 0;
-        margin-bottom: 55px;
+        padding: 10px 0;
+        margin-bottom: 20px;
       }
       .image-container:hover ~ .text { opacity: 1; transform: translateY(-40px); }
       .image-container:hover > img { border: 0; transform: translateY(-20px); }
@@ -59,6 +59,13 @@ const Item = ({ titulo, imagem, descricao, destaque, fundo }) => (
       }
       .text {
         text-align: center;
+      }
+      @media(min-width: 640px) {
+        .wrapper {
+          padding: 50px 0;
+          margin-bottom: 55px;
+          width: 45%;
+        }
       }
       @media(min-width: 768px) {
         .wrapper {
