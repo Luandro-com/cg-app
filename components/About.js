@@ -47,7 +47,7 @@ const About = ({ title, text, image, scroll, slug }) => (
       }
       @media(min-width: 1024px) {
         .wrapper {
-          maxWidth: 968px;
+          max-width: 968px;
         }
       }
     `}</style>

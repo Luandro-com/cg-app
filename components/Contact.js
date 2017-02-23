@@ -198,6 +198,7 @@ class Contact extends React.Component {
           @media (min-width: 1024px) {
             .container {
               max-width: 968px;
+              margin: 0 auto;
             }
           }
         `}</style>

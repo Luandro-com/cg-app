@@ -30,9 +30,7 @@ const PostContent = ({ title, image, content, date, author, pathname, query, seo
         Postado <span style={{ color: colors.orange }}><Time date={date} /></span> por <span style={{ color: colors.orange }}>{author}</span>
       </h4>
       <div className="image" style={{ backgroundImage: `url(${image})` }} />
-      <div className="content">
-        <Rendered data={content} />
-      </div>  
+      <Rendered data={content} className="content" />
       <div className="social">
         <FacebookShareButton
           url={currentUrl}

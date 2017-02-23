@@ -28,7 +28,8 @@
     "dev": "node server",
     "build": "next build",
     "start": "NODE_ENV=production node server",
-    "update": "yarn && yarn build && pm2 restart teste",
+    "update": "git pull origin v2.0 && yarn && yarn build && pm2 restart teste",
+    "update:production": "git pull origin master && yarn && yarn build && pm2 restart cg",
     "launch": "yarn && yarn build && pm2 start npm --name 'teste' -- start"
   },
   "devDependencies": {

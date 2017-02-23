@@ -132,6 +132,11 @@ class Team extends React.Component {
               width: 32%;
             }
           }
+          @media(min-width: 1024px) {
+            .wrapper {
+              max-width: 968px;
+            }
+          }
         `}</style>
       </section>
     );

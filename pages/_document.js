@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
       console.log('Font failed to load.');
     });
     return (
-      <html lang="pt" style={{ fontFamily: `${this.state.currentFont}, sans-serif` }}>
+      <html lang="pt" style={{ fontFamily: `${this.state.currentFont}, sans-serif`, margin: '0' }}>
         <Head>
           <meta charSet="utf-8" />
           <title>Consultoria CG</title>
@@ -123,7 +123,6 @@ export default class MyDocument extends Document {
             font-size: 1em;
           }
           #blog blockquote > * {
-            padding-left: 0 !important;
             padding-left: 30px;
           }
           button {

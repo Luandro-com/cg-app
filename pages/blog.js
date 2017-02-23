@@ -49,8 +49,8 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.content) {
-      const { previousPost, nextPost } = this.props.content[0];
+    const { previousPost, nextPost } = this.props.content[0];
+    if (previousPost && nextPost) {
       if (previousPost !== null) {
         fetch(postInfoUrl(previousPost))
           .then(res => res.json())
@@ -76,17 +76,22 @@ class Blog extends React.Component {
 
   render() {
     const { content, contactFooterData, url } = this.props;
+    const { seo } = content[0];
     const layoutData = slug => {
       if (contactFooterData) {
         return contactFooterData.filter(item => item.slug === slug)[0];
       }
       return false;
     };
-    const { seo } = content[0];
-    const checkLength = string => string.length > 3;
-    const usedTitle = checkLength(seo['opengraph-title']) ? seo['opengraph-title'] : content[0].title;
-    const usedDesc = checkLength(seo['opengraph-description']) ? seo['opengraph-description'] : seo.metadesc;
-    const usedImg = checkLength(seo['opengraph-image']) ? seo['opengraph-image'] : content[0].image;
+    let usedTitle = 'Consultoria CG';
+    let usedDesc = 'Resultados';
+    let usedImg = '';
+    if (seo) {
+      const checkLength = string => string.length > 3;
+      usedTitle = checkLength(seo['opengraph-title']) ? seo['opengraph-title'] : content[0].title;
+      usedDesc = checkLength(seo['opengraph-description']) ? seo['opengraph-description'] : seo.metadesc;
+      usedImg = checkLength(seo['opengraph-image']) ? seo['opengraph-image'] : content[0].image;
+    }
 
     return (
       <Layout
