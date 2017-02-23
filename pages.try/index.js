@@ -9,15 +9,6 @@ import { componentsDataUrl, menuDataUrl, blogDataUrl } from '../utils/config';
 import { getData, saveData } from '../utils/localStorage';
 import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
-import Header from '../components/Header';
-import About from '../components/About';
-import Team from '../components/Team';
-import Values from '../components/Values';
-import Methodology from '../components/Methodology';
-import Services from '../components/Services';
-import Clients from '../components/Clients';
-import BlogList from '../components/BlogList';
-import Action from '../components/Action';
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -141,17 +132,6 @@ class Index extends React.Component {
             menuItems={menu.items}
             fixed
           />
-          <Header {...content('cabecalho')} />
-          <About {...content('quem-somos')} scroll={scroll} url={url} />
-          <Team {...content('time')} url={url} />
-          <Values {...content('valores')} url={url} />
-          <Methodology {...content('metodologia')} url={url} />
-          <Services {...content('para-empresas')} scroll={scroll} customStyle={{ paddingTop: 100 }} url={url} sectionTitle={'Serviços'} />
-          <Services {...content('para-pessoas')} scroll={scroll} url={url} />
-          <Services {...content('cursos-e-treinamento')} scroll={scroll} url={url} />
-          <Clients {...content('nossos-clientes')} url={url} />
-          <BlogList blogLatest={blogData} finished={finished} {...content('blog')} url={url} isMobile={isMobile} />
-          <Action {...content('acao')} />
         </div>
       </Layout>
     );

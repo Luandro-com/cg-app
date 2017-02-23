@@ -18,7 +18,7 @@ const Item = ({ title, image, text, date, author, slug }) => (
     <style jsx>{`
       .wrapper {
         width: 95%;
-        height: 570px;
+        height: 580px;
         background: ${colors.white};
         color: ${colors.black};
         text-align: left;

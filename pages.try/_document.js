@@ -1,22 +1,9 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-// import onfontready from 'onfontready';
 import { fontFamily, colors } from '../utils/config';
 
 export default class MyDocument extends Document {
   render() {
-    // Load fonts
-    // if (typeof (window) !== 'undefined') {
-    //   onfontready(fontFamily, () => {
-    //     console.log('Font loaded');
-    //     document.documentElement.className += ' loaded';
-    //   }, {
-    //     timeoutAfter: 2500,
-    //     onTimeout: () => {
-    //       document.documentElement.className += ' timedOut';
-    //     },
-    //   });
-    // }
     return (
       <html lang="pt">
         <Head>

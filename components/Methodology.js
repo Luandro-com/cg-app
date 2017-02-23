@@ -57,7 +57,8 @@ const Methodology = ({ title, slug, custom }) => {
           background-size: cover;
         }
         .item:hover {
-          background-image: none !important;
+          background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898 !important; 
+          background-blend-mode: multiply,multiply;
         }
         .title {
           transition: all 0.5s ease-in-out;

@@ -40,7 +40,7 @@ class Archive extends React.Component {
   componentDidMount() {
     this.setState({
       blogData: this.props.data,
-    })
+    });
     this.getBlogData();
   }
 
