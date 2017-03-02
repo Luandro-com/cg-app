@@ -11,7 +11,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const route = pathMatch();
 const match = route('/blog/:slug');
-const port = dev ? 3000 : 3001;
+const port = dev ? 3000 : 3000;
 
 // Cache
 // This is where we cache our rendered HTML pages
