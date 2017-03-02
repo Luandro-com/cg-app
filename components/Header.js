@@ -50,6 +50,7 @@ const Header = ({ slug, title, text, image, headerColor, custom }) => {
           text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
           marginbottom: -20px;
           font-size: 1.6em;
+          font-size: 3.5vw;
         }
         h3 {
           max-width: 90%;
@@ -91,7 +92,7 @@ const Header = ({ slug, title, text, image, headerColor, custom }) => {
         }
         @media(min-width: 968px) {
           h2 {
-            font-size: 3vw;
+            font-size: 2.9vw;
           }
           h3 {
             font-size: 2vw;
@@ -103,6 +104,11 @@ const Header = ({ slug, title, text, image, headerColor, custom }) => {
         @media(min-width: 1024px) {
           .container {
              max-width: 968px;
+          }
+        }
+        @media(min-width: 1440px) {
+          .container {
+             max-width: 1280px;
           }
         }
       `}</style>

@@ -3,9 +3,9 @@ import IconL from 'react-icons/lib/fa/angle-left';
 import IconR from 'react-icons/lib/fa/angle-right';
 import { colors } from '../utils/config';
 
-const getDir = prev => prev ? { left: 10 } : { right: 10 };
+// const getDir = prev => prev ? { left: 10 } : { right: 10 };
 
-const Arrow = ({ prev, color, onClick }) => <div className="wrapper" style={getDir(prev)}>
+const BlogArrow = ({ prev, color, onClick }) => <div className={prev ? 'wrapper prev' : 'wrapper next'}>
   {prev && <IconL color={'#fff'} size={35} onClick={onClick} />}
   {!prev && <IconR color={'#fff'} size={35} onClick={onClick} />}
   <style jsx>{`
@@ -20,11 +20,22 @@ const Arrow = ({ prev, color, onClick }) => <div className="wrapper" style={getD
       padding: 5px;
       border-radius: 50%;
     }
+    .next {
+      right: 5px;
+    }
+    .prev {
+      left: -10px;
+    }
     
-    @media(min-width: 968px): {
-        [prev ? left : right]: -35;
+    @media(min-width: 968px) {
+      .next {
+        right: -15px;
+      }
+      .prev {
+        left: -35px;
+      }
     }
   `}</style>
 </div>;
 
-export default Arrow;
+export default BlogArrow;

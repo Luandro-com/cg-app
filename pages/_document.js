@@ -23,8 +23,9 @@ export default class MyDocument extends Document {
     }).catch(() => {
       console.log('Font failed to load.');
     });
+    const baseStyle = { fontFamily: `${this.state.currentFont}, sans-serif`, margin: '0' };
     return (
-      <html lang="pt" style={{ fontFamily: `${this.state.currentFont}, sans-serif`, margin: '0' }}>
+      <html lang="pt" style={baseStyle}>
         <Head>
           <meta charSet="utf-8" />
           <title>Consultoria CG</title>
@@ -60,7 +61,7 @@ export default class MyDocument extends Document {
           <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
         </Head>
-        <body>
+        <body style={baseStyle}>
           <Main />
           <NextScript />
         </body>
