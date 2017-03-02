@@ -1,4 +1,4 @@
-# Wordpress Next Front-End Boilerplate
+# Consultoria CG
 Simple PWA boilerplate with nextjs and preact
 
 [![Build Status](https://travis-ci.org/wp-next/wpn-app-boilerplate.svg?branch=master)](https://travis-ci.org/wp-next/wpn-app-boilerplate)
