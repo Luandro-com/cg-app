@@ -6,7 +6,7 @@ import ReactGA from 'react-ga';
 
 export default class MyDocument extends Document {
   state = {
-    currentFont: 'sans-serif',
+    currentFont: '"Open Sans", sans-serif',
   }
 
   componentDidMount() {
