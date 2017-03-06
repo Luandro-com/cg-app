@@ -9,10 +9,6 @@ export default class MyDocument extends Document {
     currentFont: '"Open Sans", sans-serif',
   }
 
-  componentDidMount() {
-      ReactGA.initialize(GAKey);
-  }
-
   render() {
     const font = new FontFaceObserver(fontFamily);
     font.load().then(() => {
@@ -24,6 +20,7 @@ export default class MyDocument extends Document {
       console.log('Font failed to load.');
     });
     const baseStyle = { fontFamily: `${this.state.currentFont}, sans-serif`, margin: '0' };
+    ReactGA.initialize(GAKey);
     return (
       <html lang="pt" style={baseStyle}>
         <Head>
