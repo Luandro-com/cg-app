@@ -1,12 +1,17 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import FontFaceObserver from 'fontfaceobserver';
-import { fontFamily, colors, GAKey } from '../utils/config';
-import ReactGA from 'react-ga';
+import { configureAnalytics, pageView } from '../utils/config'; 
+import { fontFamily, colors } from '../utils/config';
 
 export default class MyDocument extends Document {
   state = {
     currentFont: '"Open Sans", sans-serif',
+  }
+
+  componentDidMount() {
+    configureAnalytics();
+    pageView();
   }
 
   render() {
@@ -20,7 +25,6 @@ export default class MyDocument extends Document {
       console.log('Font failed to load.');
     });
     const baseStyle = { fontFamily: `${this.state.currentFont}, sans-serif`, margin: '0' };
-    // ReactGA.initialize(GAKey);
     return (
       <html lang="pt" style={baseStyle}>
         <Head>
