@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
       console.log('Font failed to load.');
     });
     const baseStyle = { fontFamily: `${this.state.currentFont}, sans-serif`, margin: '0' };
-    ReactGA.initialize(GAKey);
+    // ReactGA.initialize(GAKey);
     return (
       <html lang="pt" style={baseStyle}>
         <Head>
