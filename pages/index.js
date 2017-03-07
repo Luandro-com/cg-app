@@ -18,7 +18,9 @@ import Services from '../components/Services';
 import Clients from '../components/Clients';
 import BlogList from '../components/BlogList';
 import Action from '../components/Action';
-import { pageView } from '../utils/analytics';
+import { pageView, configureAnalytics } from '../utils/analytics';
+
+configureAnalytics();
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -71,8 +73,11 @@ class Index extends React.Component {
     failed: 0,
   }
 
-  componentDidMount() {
+  componentWillMount() {
     pageView();
+  }
+
+  componentDidMount() {
     const { components, menu } = this.props;
     if (components && menu) {
       saveData('components', components);
