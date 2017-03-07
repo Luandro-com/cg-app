@@ -51,6 +51,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
+    pageView();
     animateScroll.scrollToTop();
     const { previousPost, nextPost } = this.props.content[0];
     if (previousPost && nextPost) {
@@ -78,7 +79,6 @@ class Blog extends React.Component {
   }
 
   render() {
-    pageView();
     const { content, contactFooterData, url, slug } = this.props;
     const { seo } = content[0];
     const layoutData = slug => {

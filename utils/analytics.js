@@ -11,5 +11,6 @@ export function pageView() {
     ReactGA.initialize(GAKey);
     ReactGA.set({ page });
     ReactGA.pageview(page);
+    // console.log('Inicializando analytics: ', GAKey);
   }
 }

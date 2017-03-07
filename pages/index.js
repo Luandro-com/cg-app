@@ -72,6 +72,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
+    pageView();
     const { components, menu } = this.props;
     if (components && menu) {
       saveData('components', components);
@@ -115,7 +116,6 @@ class Index extends React.Component {
   }
 
   render() {
-    pageView();
     const { components, menu, blogData, scroll, finished } = this.state;
     const { url, userAgent } = this.props;
     const content = slug => {

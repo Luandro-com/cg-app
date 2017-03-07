@@ -35,6 +35,7 @@ class Archive extends React.Component {
   }
 
   componentDidMount() {
+    pageView();
     this.setState({
       blogData: this.props.data,
     });
@@ -70,7 +71,6 @@ class Archive extends React.Component {
   }
 
   render() {
-    pageView();
     const { contactFooterData, url } = this.props;
     const { blogData, finished } = this.state;
     const pageContent = (slug) => {
