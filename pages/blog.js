@@ -8,6 +8,7 @@ import NProgress from 'nprogress';
 import Layout from '../components/Layout';
 import Post from '../components/Post';
 import { appUrl, fullBlogUrl, footerContactUrl, searchUrl, postInfoUrl } from '../utils/config';
+import { pageView } from '../utils/analytics';
 
 Router.onRouteChangeStart = (url) => {
   NProgress.start();
@@ -77,6 +78,7 @@ class Blog extends React.Component {
   }
 
   render() {
+    pageView();
     const { content, contactFooterData, url, slug } = this.props;
     const { seo } = content[0];
     const layoutData = slug => {

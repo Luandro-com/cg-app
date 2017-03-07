@@ -1,7 +1,6 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import FontFaceObserver from 'fontfaceobserver';
-import { configureAnalytics, pageView } from '../utils/config'; 
 import { fontFamily, colors } from '../utils/config';
 
 export default class MyDocument extends Document {
@@ -9,20 +8,15 @@ export default class MyDocument extends Document {
     currentFont: '"Open Sans", sans-serif',
   }
 
-  componentDidMount() {
-    configureAnalytics();
-    pageView();
-  }
-
   render() {
     const font = new FontFaceObserver(fontFamily);
     font.load().then(() => {
-      console.log('Font has loaded.');
+      // console.log('Font has loaded.');
       this.setState({
         currentFont: fontFamily,
       });
     }).catch(() => {
-      console.log('Font failed to load.');
+      // console.log('Font failed to load.');
     });
     const baseStyle = { fontFamily: `${this.state.currentFont}, sans-serif`, margin: '0' };
     return (

@@ -18,6 +18,7 @@ import Services from '../components/Services';
 import Clients from '../components/Clients';
 import BlogList from '../components/BlogList';
 import Action from '../components/Action';
+import { pageView } from '../utils/analytics';
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -114,6 +115,7 @@ class Index extends React.Component {
   }
 
   render() {
+    pageView();
     const { components, menu, blogData, scroll, finished } = this.state;
     const { url, userAgent } = this.props;
     const content = slug => {

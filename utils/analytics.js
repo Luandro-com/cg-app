@@ -1,16 +1,15 @@
 import ReactGA from 'react-ga';
 import { GAKey } from '../utils/config';
 
-export function configureAnalytics() {
-  if (window) {
-    ReactGA.ginitialize(GAKey);
-  }
+const isServer = () => {
+   return ! (typeof window != 'undefined' && window.document);
 }
 
 export function pageView() {
-  if (window) {
+  if (!isServer()) {
     const page = window.location.pathname;
+    ReactGA.initialize(GAKey);
     ReactGA.set({ page });
-    ReactGA.pageview({ page });
+    ReactGA.pageview(page);
   }
 }

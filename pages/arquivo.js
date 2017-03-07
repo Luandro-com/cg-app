@@ -5,6 +5,7 @@ import Navbar from '../components/PostNavbar';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import { footerContactUrl, blogDataUrl } from '../utils/config';
+import { pageView } from '../utils/analytics';
 
 class Archive extends React.Component {
   static async getInitialProps({ query }) {
@@ -69,6 +70,7 @@ class Archive extends React.Component {
   }
 
   render() {
+    pageView();
     const { contactFooterData, url } = this.props;
     const { blogData, finished } = this.state;
     const pageContent = (slug) => {
