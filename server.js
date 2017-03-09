@@ -25,6 +25,7 @@ app.prepare()
     const server = express();
     // serve service worker
     server.get('/sw.js', (req, res) => res.sendFile(path.resolve('./.next/sw.js')));
+    // Custom /blog/:slug page
     server.get('/blog/:slug', (req, res) => {
       app.renderToHTML(req, res, '/blog', req.params.slug)
       .then((html) => {
@@ -35,6 +36,18 @@ app.prepare()
         app.renderError(err);
       });
     });
+    // Custom /arquivo/:page page
+    server.get('/arquivo/:page', (req, res) => {
+      app.renderToHTML(req, res, '/arquivo', req.params.page)
+      .then((html) => {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(html);
+      })
+      .catch((err) => {
+        app.renderError(err);
+      });
+    });
+    // Serve all others
     server.get('*', (req, res) => handle(req, res));
     server.listen(port, err => {
       if (err) throw error;

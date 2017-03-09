@@ -95,7 +95,7 @@ class Index extends React.Component {
   getBlogData() {
     const { failed, toFetch, blogData, finished } = this.state;
     const newToFetch = toFetch.split(':').map(n => parseInt(n, 10) + 3).join(':');
-    fetch(blogDataUrl(toFetch))
+    fetch(blogDataUrl(1, toFetch))
     .then(res => res.json())
     .then((data) => {
       if (data.length > 0) {
