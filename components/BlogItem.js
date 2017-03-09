@@ -7,7 +7,7 @@ import Router from 'next/router';
 const Item = ({ title, image, text, date, author, slug }) => (
   <div onClick={() => Router.push(`/blog?slug=${slug}`, `/blog/${slug}`)} style={{ cursor: 'pointer' }}>
     <article className="wrapper">
-      <header className="header" style={{ background: image ? `url(${image})` : 'gray' }} />
+      <img className="header" src={image} alt={title} />
       <div className="content">
         <h2 style={{ fontSize: '1.5em' }}>{title}</h2>
         <Rendered data={text} />
@@ -25,9 +25,7 @@ const Item = ({ title, image, text, date, author, slug }) => (
         font-size: 0.8em;
       }
       .header {
-        background-size: cover;
         width: 100%;
-        height: 200px;
       }
       .content {
         max-width: 90%;
