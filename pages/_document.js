@@ -1,9 +1,16 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
+import flush from 'styled-jsx/server'
 import FontFaceObserver from 'fontfaceobserver';
 import { fontFamily, colors } from '../utils/config';
 
 export default class MyDocument extends Document {
+  static getInitialProps ({ renderPage }) {
+    const { html, head } = renderPage();
+    const styles = flush();
+    return { html, head, styles };
+  }
+
   state = {
     currentFont: '"Open Sans", sans-serif',
   }
