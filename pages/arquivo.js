@@ -28,7 +28,7 @@ class Archive extends React.Component {
   }
 
   state = {
-      toFetch: '7:12',
+      toFetch: '6:12',
       blogData: false,
       failed: 0,
       finished: false,
@@ -49,6 +49,7 @@ class Archive extends React.Component {
     .then(data => {
         if (data.length > 0) {
             const newToFetch = toFetch.split(':').map(n => parseInt(n) + 6).join(':');
+
             this.setState({
                 blogData: blogData.concat(data),
                 toFetch: newToFetch,
@@ -74,29 +75,43 @@ class Archive extends React.Component {
     const { contactFooterData, url } = this.props;
     const { blogData, finished } = this.state;
     const pageContent = (slug) => {
-      const rawData = contactFooterData || staleData;
+      const rawData = contactFooterData;
       return rawData.filter(item => item.slug === slug)[0];
     };
     return (
-      <div style={{ marginTop: 80, textAlign: 'center' }}>
+      <div className="wrapper">
         <Navbar />
-        <h1>Arquivo do blog</h1>
-        <div className="container">
-            {blogData && blogData.map((item, key) => <div
-              key={key}
-              className="item-wrapper"
-            >
-              <BlogItem {...item} />
-            </div>)}
-            <br />
+        <div className="main">
+          <h1>Arquivo do blog</h1>
+          <div className="container">
+              {blogData && blogData.map((item, key) => <div
+                key={key}
+                className="item-wrapper"
+              >
+                <BlogItem {...item} />
+              </div>)}
+              <br />
+          </div>
+          <div className="loader">{!finished && <Loader />}</div>
         </div>
-        {!finished && <Loader />}
         <Contact {...pageContent('contato')} />
         <Footer {...pageContent('rodape')} />
         <style jsx>{`
+          .wrapper {
+            text-align: center;
+          }
+          .main {
+            padding: 80px 0;
+          }
           .container {
             max-width: 80%;
             margin: 50px auto;
+          }
+          .loader {
+            padding-top: 30px;
+          }
+          .item-wrapper {
+            padding: 40px 0;
           }
           @media (min-width: 640px) {
             .container {

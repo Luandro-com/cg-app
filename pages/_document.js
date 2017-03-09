@@ -1,6 +1,6 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import flush from 'styled-jsx/server'
+import flush from 'styled-jsx/server';
 import FontFaceObserver from 'fontfaceobserver';
 import { fontFamily, colors } from '../utils/config';
 
@@ -34,6 +34,8 @@ export default class MyDocument extends Document {
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta property="og:locale" content="pt_BR" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content={colors.orange} />
+          <link rel="manifest" href="static/manifest.json" />
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />
           <link rel="alternate" type="application/rss+xml" title="Feed de comentários para CG Consultoria »" href="http://admin.consultoriacg.com.br/comments/feed/" />
           <link rel="dns-prefetch" href="//s.w.org" />
