@@ -31,7 +31,12 @@ class Archive extends React.Component {
     }
     try {
       data = await fetch(blogDataUrl(page, '0:6'))
-        .then(res => res.json());
+        .then(res => res.json())
+        .then(json => {
+          if (json.length < 1) {
+            Router.push('/arquivo')
+          } else return json
+        });
       contactFooterData = await fetch(footerContactUrl)
         .then(res => res.json());
     } catch (err) {
@@ -54,6 +59,7 @@ class Archive extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.data)
     pageView();
     this.setState({
       blogData: this.props.data,

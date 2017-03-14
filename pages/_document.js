@@ -1,8 +1,9 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
+import NoSSR from 'react-no-ssr';
 import FontFaceObserver from 'fontfaceobserver';
-import { fontFamily, colors } from '../utils/config';
+import { fontFamily, colors, GAKey } from '../utils/config';
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
@@ -64,6 +65,9 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+          <script type="text/javascript">
+            alert('blabla')
+          </script>
         </Head>
         <body style={baseStyle}>
           <Main />
