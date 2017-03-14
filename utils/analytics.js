@@ -1,7 +1,7 @@
 import { GAKey } from '../utils/config';
 
 const isServer = () => {
-   return !(typeof window != 'undefined' && window.document);
+  return !(typeof window != 'undefined' && window.document);
 }
 
 let ReactGA;
