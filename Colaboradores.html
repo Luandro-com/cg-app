@@ -1,0 +1,205 @@
+<html lang="pt">
+    <meta charSet="utf-8" />
+    <title>Consultoria CG</title>
+    <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <body>
+        <section class="wrapper">
+        <h2>Seção</h2>
+        <h3 class="sub-colaboradores">texto</h3>
+        <div class="list-wrapper" id="list">
+        </div>
+        <style>
+          .wrapper {
+            margin: 0;
+            text-align: center;
+            padding: 80px 0;
+          }
+          .sub-colaboradores {
+              font-size: 1.2em;
+              font-weight: 300;
+              padding-bottom: 50px;
+          }
+          .list-wrapper {
+            padding: 50px 0 70px;
+          }
+          .item-wrapper {
+            padding-bottom: 80px;
+            transition: all 0.5s ease-in-out;
+          }
+          .item-wrapper img {
+            max-height: 180px;
+          }
+          .nome-colaborador {
+              text-transform: uppercase;
+              padding-bottom: 30px;
+          }
+          .cargo-colaborador {
+              margin-top: -20px;
+              text-transform: uppercase;
+          }
+          .texto-colaborador {
+            background: #f1623a;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            transition: 400ms all ease-out;
+            opacity: 0;
+            height: 0;
+            transform: translateY(-35px);
+          }
+          .texto-colaborador-active {
+            height: auto;
+            transform: translateY(-29px);
+            opacity: 1;
+          }
+          .text-colaborador p {
+            width: 85%;
+            margin: 0 auto;
+            color: white;
+            font-size: 0.8em
+          }
+          .botao-colaborador {
+            cursor: pointer;
+            z-index: 9;
+            margin: 0 auto;
+            position: relative;
+            bottom: 16px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background: #f1623a;
+          }
+          .botao-colaborador-active {
+            bottom: 52px;
+          }
+          .line {
+            width: 100%;
+            border-top: 2px solid #f1623a;
+            margin-bottom: -35px;
+          }
+          .plus {
+            cursor: pointer;
+            position: absolute;
+            border-radius: 3px;
+            background: white;
+            transform: rotate(0deg);
+            transition: 400ms all ease-out;
+          }
+          .vert {
+            top: 18px;
+            left: 5px;
+            right: 5px;
+            height: 5px;
+          }
+          .horz {
+            transform: rotate(0deg);
+            top: 5px;
+            left: 18px;
+            bottom: 5px;
+            width: 5px;
+          }
+          .horz-active {
+            transform: rotate(90deg);
+          }
+          @media(min-width: 640px) {
+            .list-wrapper {
+              padding: 0;
+              display: flex;
+              flex-flow: row wrap;
+              justify-content: space-around;
+            }
+            .item-wrapper {
+              width: 45%;
+            }
+            .line {
+              width: 95%;
+            }
+          }
+          @media(min-width: 768px) {
+            .wrapper {
+              margin: 0 auto;
+              max-width: 80%;
+              padding: 0;
+            }
+            .item-wrapper {
+              width: 32%;
+            }
+          }
+          @media(min-width: 1024px) {
+            .wrapper {
+              max-width: 968px;
+            }
+          }
+        </style>
+        <script>
+          var list = [
+            {
+              imagem: 'static/imgs/team_member.png',
+              nome: 'Nome 1',
+              cargo: 'Cargo 1',
+              texto: 'Texto de descrição'
+            },
+            {
+              imagem: 'static/imgs/team_member.png',
+              nome: 'Nome 2',
+              cargo: 'Cargo 2',
+              texto: 'Texto de descrição'
+            },
+            {
+              imagem: 'static/imgs/team_member.png',
+              nome: 'Nome 3',
+              cargo: 'Cargo 3',
+              texto: 'Texto de descrição bem grande com muito detalhe sobre varias coisas interessantes'
+            },
+          ]
+          window.onload = function() {
+            var container = document.getElementById('list');
+            var text = document.getElementById(`txt-${key}`);
+            var finalHTML = '';
+            list.map(function(item, key) {
+              finalHTML +=`
+              <div class="item-wrapper">
+                <img height="160" src="${item.imagem}" alt="nome do colaborador" />
+                <h4 class="nome-colaborador">${item.nome}</h4>
+                <h5 class="cargo-colaborador">${item.cargo}</h5>
+                <div class="line"></div>
+                <div class="texto-colaborador" id="txt-${key}">
+                    <p>${item.texto}</p>
+                </div>
+                <div class="botao-colaborador" id="btn-${key}">
+                    <div class="plus vert"></div>
+                    <div class="plus horz"></div>
+                </div>
+              </div>
+              `;
+            });
+            container.innerHTML = finalHTML;
+            list.map(function(item, key) {
+              var button = document.getElementById(`btn-${key}`);
+              button.onclick = function() {
+                open(key);
+              }
+            })
+          }
+          function open(key) {
+            var button = document.getElementById(`btn-${key}`);
+            var text = document.getElementById(`txt-${key}`);
+            var line = button.children[1];
+            button.className = 'botao-colaborador botao-colaborador-active';
+            text.className = 'texto-colaborador texto-colaborador-active';
+            line.className = 'plus horz horz-active';
+            button.addEventListener('click', function() { close(key) });
+          }
+          function close(key) {
+            var button = document.getElementById(`btn-${key}`);
+            var text = document.getElementById(`txt-${key}`);
+            var line = button.children[1];
+            button.className = 'botao-colaborador';
+            text.className = 'texto-colaborador';
+            line.className = 'plus horz';
+            button.addEventListener('click', function() { open(key) });
+          }
+        </script>
+      </section>
+    </body>
+</html>
