@@ -5,7 +5,7 @@ export const colors = {
   grey: '#404040',
   secondary: '#7a5634',
 };
-export const GAKey = 'UA-84658570-1';
+export const GAKey = 'UA-00000000-1';
 export const fontFamily = 'Open Sans';
 export const appUrl = 'http://consultoriacg.com.br';
 export const apiUrl = 'http://admin.consultoriacg.com.br/wp-json/';
@@ -16,8 +16,9 @@ export const fullBlogUrl = slug => `${apiUrl}wp/v2/posts?_embed&slug=${slug}&_qu
 export const footerContactUrl = `${apiUrl}wp/v2/pages?include=300,313&_query=[0:20].{title:%20title.rendered,%20slug:%20slug,%20text:%20content.rendered,%20custom:%20acf,%20image:%20better_featured_image.source_url%20}`;
 export const searchUrl = term => `${apiUrl}wp/v2/posts?filter[s]=${term}&_query=[].{title: title.rendered, slug: slug, author: author, date: date}`;
 export const postInfoUrl = id => `${apiUrl}wp/v2/posts/${id}?fields=title,author,date,slug`;
+// Uses https://www.emailjs.com/ mailing service for contact form
 export const mailing = {
-  user: 'user_SUl0Vj0ZyDbT6UE7FY5Ca',
+  user: 'username',
   service: 'default_service',
-  template: 'comentario',
+  template: 'comments',
 };
